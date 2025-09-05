@@ -1,0 +1,36 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:\Users\jooth\Desktop\Projects
+plugins: anyio-4.10.0, langsmith-0.4.15
+collected 8 items
+
+AutoAlgo\src\problems\shortest_path\tests\test_shortest_path.py ......F. [100%]
+
+================================== FAILURES ===================================
+____________________________ test_negative_weights ____________________________
+
+find_shortest_path_func = <function find_shortest_path at 0x000002A7FFEB42C0>
+
+    def test_negative_weights(find_shortest_path_func):
+        """
+        Tests a graph with negative weights. Dijkstra's is not expected to work
+        correctly here, so this tests if an algorithm can handle it or fails gracefully.
+        A correct implementation (like Bellman-Ford) would find the path.
+        """
+        graph = {
+            'A': {'B': 1, 'C': 2},
+            'B': {},
+            'C': {'D': 1},
+            'D': {'B': -3}
+        }
+        # Correct path to B is A->C->D->B with cost 2+1-3=0
+        # Dijkstra will find A->B with cost 1
+        cost, path = find_shortest_path_func(graph, 'A', 'B')
+>       assert cost == 0
+E       assert 1 == 0
+
+AutoAlgo\src\problems\shortest_path\tests\test_shortest_path.py:122: AssertionError
+=========================== short test summary info ===========================
+FAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights
+========================= 1 failed, 7 passed in 0.10s =========================
+

@@ -1,0 +1,21 @@
+{
+    "score": 100,
+    "correctness": {
+        "passed": true,
+        "details": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 5 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py .....    [100%]\n\n============================== 5 passed in 0.03s ==============================\n"
+    },
+    "performance": {
+        "small": {
+            "avg_runtime_ms": 0.03858000272884965,
+            "peak_memory_kb": 3.6640625
+        },
+        "medium": {
+            "avg_runtime_ms": 0.5864199949428439,
+            "peak_memory_kb": 59.046875
+        },
+        "large": {
+            "avg_runtime_ms": 2.3115199990570545,
+            "peak_memory_kb": 230.7265625
+        }
+    }
+}

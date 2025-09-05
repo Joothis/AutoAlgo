@@ -1,0 +1,6 @@
+pytest
+psutil
+plotly
+matplotlib
+Jinja2
+pandas

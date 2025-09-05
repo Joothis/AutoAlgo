@@ -1,0 +1,59 @@
+[
+    {
+        "variation_id": "bellman_ford_correct",
+        "results": {
+            "score": 100,
+            "correctness": {
+                "passed": true,
+                "details": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ........ [100%]\n\n============================== 8 passed in 0.04s ==============================\n\n"
+            },
+            "performance": {
+                "small": {
+                    "avg_runtime_ms": 0.10225999867543578,
+                    "peak_memory_kb": 4.0390625
+                },
+                "medium": {
+                    "avg_runtime_ms": 11.367320001590997,
+                    "peak_memory_kb": 58.0
+                },
+                "large": {
+                    "avg_runtime_ms": 123.32561999792233,
+                    "peak_memory_kb": 232.8125
+                }
+            }
+        }
+    },
+    {
+        "variation_id": "dijkstra_optimal",
+        "results": {
+            "score": 0,
+            "correctness": {
+                "passed": false,
+                "details": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ......F. [100%]\n\n================================== FAILURES ===================================\n____________________________ test_negative_weights ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x000001984C3D4400>\n\n    def test_negative_weights(find_shortest_path_func):\n        \"\"\"\n        Tests a graph with negative weights. Dijkstra's is not expected to work\n        correctly here, so this tests if an algorithm can handle it or fails gracefully.\n        A correct implementation (like Bellman-Ford) would find the path.\n        \"\"\"\n        graph = {\n            'A': {'B': 1, 'C': 2},\n            'B': {},\n            'C': {'D': 1},\n            'D': {'B': -3}\n        }\n        # Correct path to B is A->C->D->B with cost 2+1-3=0\n        # Dijkstra will find A->B with cost 1\n        cost, path = find_shortest_path_func(graph, 'A', 'B')\n>       assert cost == 0\nE       assert 1 == 0\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:122: AssertionError\n=========================== short test summary info ===========================\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights\n========================= 1 failed, 7 passed in 0.09s =========================\n\n"
+            },
+            "performance": null
+        }
+    },
+    {
+        "variation_id": "dijkstra_inefficient_list",
+        "results": {
+            "score": 0,
+            "correctness": {
+                "passed": false,
+                "details": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ......F. [100%]\n\n================================== FAILURES ===================================\n____________________________ test_negative_weights ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x0000029D97AE42C0>\n\n    def test_negative_weights(find_shortest_path_func):\n        \"\"\"\n        Tests a graph with negative weights. Dijkstra's is not expected to work\n        correctly here, so this tests if an algorithm can handle it or fails gracefully.\n        A correct implementation (like Bellman-Ford) would find the path.\n        \"\"\"\n        graph = {\n            'A': {'B': 1, 'C': 2},\n            'B': {},\n            'C': {'D': 1},\n            'D': {'B': -3}\n        }\n        # Correct path to B is A->C->D->B with cost 2+1-3=0\n        # Dijkstra will find A->B with cost 1\n        cost, path = find_shortest_path_func(graph, 'A', 'B')\n>       assert cost == 0\nE       assert 1 == 0\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:122: AssertionError\n=========================== short test summary info ===========================\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights\n========================= 1 failed, 7 passed in 0.09s =========================\n\n"
+            },
+            "performance": null
+        }
+    },
+    {
+        "variation_id": "dijkstra_buggy_edge_case",
+        "results": {
+            "score": 0,
+            "correctness": {
+                "passed": false,
+                "details": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ..F...F. [100%]\n\n================================== FAILURES ===================================\n____________________________ test_start_equals_end ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x00000187999544A0>\nsample_graph = {'A': {'B': 1, 'C': 4}, 'B': {'C': 2, 'D': 5}, 'C': {'D': 1}, 'D': {'E': 2}, ...}\n\n    def test_start_equals_end(find_shortest_path_func, sample_graph):\n        \"\"\"Tests when the start and end nodes are the same.\"\"\"\n        cost, path = find_shortest_path_func(sample_graph, 'A', 'A')\n        assert cost == 0\n>       assert path == ['A']\nE       AssertionError: assert [] == ['A']\nE         \nE         Right contains one more item: 'A'\nE         Use -v to get more diff\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:72: AssertionError\n____________________________ test_negative_weights ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x00000187999544A0>\n\n    def test_negative_weights(find_shortest_path_func):\n        \"\"\"\n        Tests a graph with negative weights. Dijkstra's is not expected to work\n        correctly here, so this tests if an algorithm can handle it or fails gracefully.\n        A correct implementation (like Bellman-Ford) would find the path.\n        \"\"\"\n        graph = {\n            'A': {'B': 1, 'C': 2},\n            'B': {},\n            'C': {'D': 1},\n            'D': {'B': -3}\n        }\n        # Correct path to B is A->C->D->B with cost 2+1-3=0\n        # Dijkstra will find A->B with cost 1\n        cost, path = find_shortest_path_func(graph, 'A', 'B')\n>       assert cost == 0\nE       assert 1 == 0\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:122: AssertionError\n=========================== short test summary info ===========================\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_start_equals_end\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights\n========================= 2 failed, 6 passed in 0.10s =========================\n\n"
+            },
+            "performance": null
+        }
+    }
+]

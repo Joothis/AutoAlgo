@@ -1,0 +1,79 @@
+{
+  "experiment_id": "comparison_001",
+  "metadata": {
+    "experiment_id": "comparison_001",
+    "timestamp_utc": "2025-09-05T17:12:56.526734",
+    "python_version": "3.13.7",
+    "os": "Windows",
+    "rng_seed": 42,
+    "problem_name": "shortest_path",
+    "git_commit_hash": "N/A (tool unavailable)"
+  },
+  "candidates": [
+    {
+      "id": "bellman_ford_correct",
+      "name": "bellman_ford_correct",
+      "correctness": 1.0,
+      "pytest_output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ........ [100%]\n\n============================== 8 passed in 0.03s ==============================\n\n",
+      "runtime_ms": {
+        "10": 0.1226400025188923,
+        "50": 13.607359991874546,
+        "100": 126.13148000091314
+      },
+      "mem_kb": {
+        "10": 4.0625,
+        "50": 58.0,
+        "100": 232.8359375
+      },
+      "avg_runtime_ms": 46.62049333176886,
+      "avg_mem_kb": 98.29947916666667,
+      "norm_correctness": 1.0,
+      "norm_runtime": 1.0,
+      "norm_memory": 1.0,
+      "final_score": 1.0
+    },
+    {
+      "id": "dijkstra_optimal",
+      "name": "dijkstra_optimal",
+      "correctness": 0.0,
+      "pytest_output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ......F. [100%]\n\n================================== FAILURES ===================================\n____________________________ test_negative_weights ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x00000201BFB84400>\n\n    def test_negative_weights(find_shortest_path_func):\n        \"\"\"\n        Tests a graph with negative weights. Dijkstra's is not expected to work\n        correctly here, so this tests if an algorithm can handle it or fails gracefully.\n        A correct implementation (like Bellman-Ford) would find the path.\n        \"\"\"\n        graph = {\n            'A': {'B': 1, 'C': 2},\n            'B': {},\n            'C': {'D': 1},\n            'D': {'B': -3}\n        }\n        # Correct path to B is A->C->D->B with cost 2+1-3=0\n        # Dijkstra will find A->B with cost 1\n        cost, path = find_shortest_path_func(graph, 'A', 'B')\n>       assert cost == 0\nE       assert 1 == 0\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:122: AssertionError\n=========================== short test summary info ===========================\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights\n========================= 1 failed, 7 passed in 0.10s =========================\n\n",
+      "runtime_ms": {},
+      "mem_kb": {},
+      "avg_runtime_ms": Infinity,
+      "avg_mem_kb": Infinity,
+      "norm_correctness": 0.0,
+      "norm_runtime": 0.0,
+      "norm_memory": 0.0,
+      "final_score": 0.0
+    },
+    {
+      "id": "dijkstra_inefficient_list",
+      "name": "dijkstra_inefficient_list",
+      "correctness": 0.0,
+      "pytest_output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ......F. [100%]\n\n================================== FAILURES ===================================\n____________________________ test_negative_weights ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x000002A7FFEB42C0>\n\n    def test_negative_weights(find_shortest_path_func):\n        \"\"\"\n        Tests a graph with negative weights. Dijkstra's is not expected to work\n        correctly here, so this tests if an algorithm can handle it or fails gracefully.\n        A correct implementation (like Bellman-Ford) would find the path.\n        \"\"\"\n        graph = {\n            'A': {'B': 1, 'C': 2},\n            'B': {},\n            'C': {'D': 1},\n            'D': {'B': -3}\n        }\n        # Correct path to B is A->C->D->B with cost 2+1-3=0\n        # Dijkstra will find A->B with cost 1\n        cost, path = find_shortest_path_func(graph, 'A', 'B')\n>       assert cost == 0\nE       assert 1 == 0\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:122: AssertionError\n=========================== short test summary info ===========================\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights\n========================= 1 failed, 7 passed in 0.10s =========================\n\n",
+      "runtime_ms": {},
+      "mem_kb": {},
+      "avg_runtime_ms": Infinity,
+      "avg_mem_kb": Infinity,
+      "norm_correctness": 0.0,
+      "norm_runtime": 0.0,
+      "norm_memory": 0.0,
+      "final_score": 0.0
+    },
+    {
+      "id": "dijkstra_buggy_edge_case",
+      "name": "dijkstra_buggy_edge_case",
+      "correctness": 0.0,
+      "pytest_output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0\nrootdir: C:\\Users\\jooth\\Desktop\\Projects\nplugins: anyio-4.10.0, langsmith-0.4.15\ncollected 8 items\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py ..F...F. [100%]\n\n================================== FAILURES ===================================\n____________________________ test_start_equals_end ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x00000264A52B84A0>\nsample_graph = {'A': {'B': 1, 'C': 4}, 'B': {'C': 2, 'D': 5}, 'C': {'D': 1}, 'D': {'E': 2}, ...}\n\n    def test_start_equals_end(find_shortest_path_func, sample_graph):\n        \"\"\"Tests when the start and end nodes are the same.\"\"\"\n        cost, path = find_shortest_path_func(sample_graph, 'A', 'A')\n        assert cost == 0\n>       assert path == ['A']\nE       AssertionError: assert [] == ['A']\nE         \nE         Right contains one more item: 'A'\nE         Use -v to get more diff\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:72: AssertionError\n____________________________ test_negative_weights ____________________________\n\nfind_shortest_path_func = <function find_shortest_path at 0x00000264A52B84A0>\n\n    def test_negative_weights(find_shortest_path_func):\n        \"\"\"\n        Tests a graph with negative weights. Dijkstra's is not expected to work\n        correctly here, so this tests if an algorithm can handle it or fails gracefully.\n        A correct implementation (like Bellman-Ford) would find the path.\n        \"\"\"\n        graph = {\n            'A': {'B': 1, 'C': 2},\n            'B': {},\n            'C': {'D': 1},\n            'D': {'B': -3}\n        }\n        # Correct path to B is A->C->D->B with cost 2+1-3=0\n        # Dijkstra will find A->B with cost 1\n        cost, path = find_shortest_path_func(graph, 'A', 'B')\n>       assert cost == 0\nE       assert 1 == 0\n\nAutoAlgo\\src\\problems\\shortest_path\\tests\\test_shortest_path.py:122: AssertionError\n=========================== short test summary info ===========================\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_start_equals_end\nFAILED AutoAlgo/src/problems/shortest_path/tests/test_shortest_path.py::test_negative_weights\n========================= 2 failed, 6 passed in 0.10s =========================\n\n",
+      "runtime_ms": {},
+      "mem_kb": {},
+      "avg_runtime_ms": Infinity,
+      "avg_mem_kb": Infinity,
+      "norm_correctness": 0.0,
+      "norm_runtime": 0.0,
+      "norm_memory": 0.0,
+      "final_score": 0.0
+    }
+  ],
+  "winner": "bellman_ford_correct"
+}

@@ -1,0 +1,9 @@
+{
+    "experiment_id": "comparison_001",
+    "timestamp_utc": "2025-09-05T17:12:56.526734",
+    "python_version": "3.13.7",
+    "os": "Windows",
+    "rng_seed": 42,
+    "problem_name": "shortest_path",
+    "git_commit_hash": "N/A (tool unavailable)"
+}

@@ -1,0 +1,5 @@
+id,name,correctness,avg_runtime_ms,avg_mem_kb,norm_correctness,norm_runtime,norm_memory,final_score
+bellman_ford_correct,bellman_ford_correct,1.0,46.62049333176886,98.29947916666667,1.0,1.0,1.0,1.0
+dijkstra_optimal,dijkstra_optimal,0.0,inf,inf,0.0,0.0,0.0,0.0
+dijkstra_inefficient_list,dijkstra_inefficient_list,0.0,inf,inf,0.0,0.0,0.0,0.0
+dijkstra_buggy_edge_case,dijkstra_buggy_edge_case,0.0,inf,inf,0.0,0.0,0.0,0.0

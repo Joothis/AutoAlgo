@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AutoAlgo - Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 28px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #f6f6f6; }
+    .summary { margin-bottom: 20px; padding: 12px; border-radius: 6px; background: #f8f8ff; }
+    .charts img { max-width: 100%; height: auto; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h1>AutoAlgo — Comparison Report: {{ experiment_id }}</h1>
+  <div class="summary">
+    <strong>Winner:</strong> {{ winner }} <br>
+    <strong>Timestamp:</strong> {{ metadata.timestamp_utc }} <br>
+    <strong>Git commit:</strong> {{ metadata.git_commit_hash }}
+  </div>
+
+  <h2>Candidates (ranked)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th><th>ID</th><th>Name</th><th>Correctness</th><th>Avg runtime ms</th><th>Avg mem KB</th><th>Final score</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for c in candidates %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.correctness }}</td>
+        <td>{{ "%.3f"|format(c.avg_runtime_ms) }}</td>
+        <td>{{ "%.2f"|format(c.avg_mem_kb) }}</td>
+        <td>{{ c.final_score }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Charts</h2>
+  <div class="charts">
+    <h3>Runtime vs Input Size</h3>
+    <img src="runtime_chart.png" alt="runtime chart">
+    <h3>Memory vs Input Size</h3>
+    <img src="memory_chart.png" alt="memory chart">
+    <h3>Final Scores</h3>
+    <img src="scores_chart.png" alt="score bar">
+  </div>
+
+  <h2>Per-candidate details</h2>
+  {% for c in candidates %}
+    <h3>{{ c.id }} — {{ c.name }}</h3>
+    <pre>{{ c | tojson(indent=2) }}</pre>
+  {% endfor %}
+</body>
+</html>
