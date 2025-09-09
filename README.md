@@ -59,7 +59,3 @@ The system is designed to be easily extensible.
 3.  Create a `tests/test_sorting.py` file with a `pytest` suite for sorting algorithms.
 4.  Create an `input_generators.py` that can generate lists of numbers to be sorted.
 5.  Update `run.py` to point the `Orchestrator` to your new `sorting` problem.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
